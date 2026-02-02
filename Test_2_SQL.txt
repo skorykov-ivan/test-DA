@@ -1,0 +1,35 @@
+create table surnames
+(person_id       INT primary KEY,
+ surname         varchar(50));
+    
+insert into surnames (person_id, surname)
+values (1, 'Иванов'),
+       (2, 'Петров'),
+       (3, 'Сидоров');
+
+create table names
+(person_id       INT primary KEY,
+ name            varchar(50),
+ FOREIGN KEY (person_id) REFERENCES surnames(person_id));
+    
+insert into names (person_id, name)
+values (1, 'Иван'),
+       (2, 'Петр'),
+       (3, 'Сидор');
+       
+create table middle_names
+(person_id       INT primary KEY,
+ middle_name     varchar(50),
+ FOREIGN KEY (person_id) REFERENCES surnames(person_id));
+    
+insert into middle_names (person_id, middle_name)
+values (1, 'Иванович'),
+       (2, 'Петрович'),
+       (3, 'Сидорович');
+       
+select
+    concat(surname, ' ', name, ' ', middle_name) as "Ф.И.О"
+from surnames
+left join names using (person_id)
+left join middle_names using (person_id)
+order by concat(surname, ' ', name, ' ', middle_name) desc;
