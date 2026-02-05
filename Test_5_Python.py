@@ -13,7 +13,6 @@ def total_revenue(purchases):                     #Общая выручка
         answ += product['price'] * product['quantity']
     return answ
 
-
 def items_by_category(purchases):                 #Ключ — категория, а значение — список уникальных товаров в этой категории.
     answ = {}
     for product in purchases:
@@ -26,7 +25,6 @@ def expensive_purchases(purchases, min_price):    #Все покупки, где
         if product['price'] >= min_price:
             answ.append(product)
     return answ
-
 
 def average_price_by_category(purchases):         #Cредние цены товаров по каждой категории.
     answ = {}
@@ -52,4 +50,5 @@ print(f'Общая выручка: {total_revenue(purchases)}')
 print(f'Товары по категориям: {items_by_category(purchases)}')
 print(f'Покупки дороже {min_price}: {expensive_purchases(purchases, min_price)}')
 print(f'Средняя цена по категориям: {average_price_by_category(purchases)}')
+
 print(f'Категория с наибольшим количеством проданных товаров: {most_frequent_category(purchases)}')
