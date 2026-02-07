@@ -43,12 +43,11 @@ def most_frequent_category(purchases):            #Категория, в кот
     for product in purchases:
         answ[product['category']] = answ.get(product['category'], 0) + product['quantity']
         
-    return max(answ)
+    return max(answ, key=answ.get)
 
 
 print(f'Общая выручка: {total_revenue(purchases)}')
 print(f'Товары по категориям: {items_by_category(purchases)}')
 print(f'Покупки дороже {min_price}: {expensive_purchases(purchases, min_price)}')
 print(f'Средняя цена по категориям: {average_price_by_category(purchases)}')
-
 print(f'Категория с наибольшим количеством проданных товаров: {most_frequent_category(purchases)}')
